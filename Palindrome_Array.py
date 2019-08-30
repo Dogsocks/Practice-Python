@@ -11,16 +11,33 @@ the array of potential palindromes in case x
 """
 
 
-def palin_array():
-    #  get the data from the user
-    print("HELLO")
-    pal = input("Enter your potential palindrome set:")
-    print("You input " + pal)
+def palin_array(source):
+    with open(source) as inp:
+        data = inp.read().splitlines()
+        noPalin = data.pop(0)
+        print("There are " + noPalin + " test cases present")
+        newlist = []
+        for i in data:
+            if len(i) > 2:
+                newlist.append(i)
+        print(newlist)
+        x = []
+        for i in newlist:
+            x.append((i.split()))
+        #print(x)
+        count = 0
+        for i in x:
+           for z in i:
+               #print(z)
+               if z == (z[:: -1]):
+                    count += 1
+                    #print("count", count)
+           if count != len(i):
+                print("0")
+           else:
+                print("1")
+           count = 0
 
 
-#  break up and put in array
-#  check it
-#  tell the user
 
-
-palin_array()
+palin_array("example palindrome2.txt")
